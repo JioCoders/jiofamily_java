@@ -26,9 +26,12 @@ spring:
   #   org:
   #     springfremwork:
   #       jdbc: DEBUG
-  # h2:
-  #   console:
-  #     enabled: true
+  h2:
+    console:
+      enabled: true
   mvc:
     pathmatch:
       matching-strategy: ANT_PATH_MATCHER
+
+example:
+  name: ${EXAMPLE_NAME:World}

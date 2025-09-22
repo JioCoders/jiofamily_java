@@ -1,6 +1,7 @@
 package com.jiocoders.java.jiofamily.networkmodel.response.data;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,6 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Setter
 @Getter
+@Data
 public class UserData {
     int userId;
     String firstName;
@@ -19,8 +21,9 @@ public class UserData {
 
     String mobileNo;
 
+    CommonData department;
+
     CommonData userLocationData;
-    String employeeId;
 
     char gender;
 

@@ -2,9 +2,15 @@ package com.jiocoders.java.jiofamily.security;
 
 import java.util.Base64;
 import java.util.Date;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import javax.crypto.SecretKey;
+import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
+import com.jiocoders.java.jiofamily.controller.AdminController;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
@@ -14,9 +20,10 @@ import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpServletRequest;
 
 @Component
-public class JwtTokenProvider {
+public class JwtTokenProvider {    
+    private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 
-    private String secretKey = "Jiocoders";
+    private String secretKey = "JWT_SECRET";
 
     @Value("${security.jwt.token.expire-length:604800000}")
     private long validityInMilliseconds = 604800000; // 30 days
@@ -36,11 +43,16 @@ public class JwtTokenProvider {
         Date now = new Date();
         Date validity = new Date(now.getTime() + validityInMilliseconds);
 
+        String secret = System.getenv(secretKey);
+        SecretKey key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+        logger.info("Secret Key: " + secret);
+
         return Jwts.builder()
                 .setClaims(claims)
                 .setIssuedAt(now)
                 .setExpiration(validity)
-                .signWith(SignatureAlgorithm.HS256, secretKey)
+                .setSubject(secret)
+                .signWith(key)
                 .compact();
     }
 

@@ -15,11 +15,8 @@ public class LoginData {
     String lastName;
     String emailId;
     String mobileNo;
-    int role;
     int department;
-    String empId;
     LocationData userLocationData;
-    int warehouse;
     int companyId;
     char gender;
     long dob;
