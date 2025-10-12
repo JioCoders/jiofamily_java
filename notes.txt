@@ -1,1 +1,33 @@
-OK.
+# ----------------------------------------------------------
+# Download kafka binary
+cd ~/Documents/software/kafka_2.13-4.1.0
+bin/kafka-storage.sh random-uuid
+bin/kafka-storage.sh format -t cG22McNjSXW_f9hEEJ7lSA -c config/kraft/server.properties
+bin/kafka-server-start.sh config/kraft/server.properties
+INFO [KafkaServer id=1] started (kafka.server.KafkaServer)
+kill -9 <process_id>
+
+# Create Topic
+bin/kafka-topics.sh --create --topic demo_topic --bootstrap-server localhost:9092
+bin/kafka-topics.sh --create \
+  --topic jiofamily-topic \
+  --bootstrap-server localhost:9092 \
+  --partitions 1 \
+  --replication-factor 1
+bin/kafka-topics.sh --list --bootstrap-server localhost:9092
+# Send/Receive messages
+bin/kafka-console-producer.sh --topic demo_topic --bootstrap-server localhost:9092
+bin/kafka-console-consumer.sh --topic demo_topic --from-beginning --bootstrap-server localhost:9092
+
+# Run in background
+nohup bin/kafka-server-start.sh config/kraft/server.properties > kafka.log 2>&1 &
+
+# 1️⃣ Stop Kafka if running
+pkill -f kafka.Kafka
+# 2️⃣ Remove old logs (contains old cluster.id)
+rm -rf /tmp/kraft-combined-logs
+# 3️⃣ Re-format with your new cluster ID
+bin/kafka-storage.sh format -t cG22McNjSXW_f9hEEJ7lSA -c config/kraft/server.properties
+# 4️⃣ Start Kafka again
+bin/kafka-server-start.sh config/kraft/server.properties
+# ----------------------------------------------------------

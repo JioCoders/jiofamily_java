@@ -5,10 +5,20 @@ server:
   servlet:
     context-path: /
 spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: demo-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
   datasource:
-    url: ${SPRING_DATASOURCE_URL}
-    username: ${SPRING_DATASOURCE_USERNAME}
-    password: ${SPRING_DATASOURCE_PASSWORD}
+    url: jdbc:postgresql://localhost:5432/jiofamily #${SPRING_DATASOURCE_URL}
+    username: postgres #${SPRING_DATASOURCE_USERNAME}
+    password: Postgress #${SPRING_DATASOURCE_PASSWORD}
     generate-unique-name: false
     # name: content
   jpa:
@@ -32,6 +42,3 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ANT_PATH_MATCHER
-
-example:
-  name: ${EXAMPLE_NAME:World}

@@ -20,7 +20,7 @@ import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpServletRequest;
 
 @Component
-public class JwtTokenProvider {    
+public class JwtTokenProvider {
     private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 
     private String secretKey = "JWT_SECRET";
