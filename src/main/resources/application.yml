@@ -5,18 +5,24 @@ server:
   servlet:
     context-path: /
 spring:
+  # ===========================
+  # Kafka Configuration
+  # ===========================
   kafka:
     bootstrap-servers: localhost:9092
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
     consumer:
-      group-id: jio-group
-      auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      group-id: jio-group
+      auto-offset-reset: earliest
       properties:
         spring.json.trusted.packages: "*"
+  # ===========================
+  # DB Configuration
+  # ===========================
   datasource:
     url: jdbc:postgresql://localhost:5432/jiofamily #${SPRING_DATASOURCE_URL}
     username: postgres #${SPRING_DATASOURCE_USERNAME}
