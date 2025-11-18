@@ -10,15 +10,15 @@ INFO [KafkaServer id=1] started (kafka.server.KafkaServer)
 kill -9 <process_id>
 
 # Create Topic
-bin/kafka-topics.sh --create --topic demo_topic --bootstrap-server localhost:9092
+bin/kafka-topics.sh --create --topic string_topic --bootstrap-server localhost:9092
 bin/kafka-topics.sh --create \
-  --topic jiofamily-topic \
+  --topic object-topic \
   --bootstrap-server localhost:9092 \
   --partitions 1 \
   --replication-factor 1
 bin/kafka-topics.sh --list --bootstrap-server localhost:9092
 # Send/Receive messages
-bin/kafka-console-producer.sh --topic demo_topic --bootstrap-server localhost:9092
+bin/kafka-console-producer.sh --topic string_topic --bootstrap-server localhost:9092
 bin/kafka-console-consumer.sh --topic demo_topic --from-beginning --bootstrap-server localhost:9092
 
 # Run in background

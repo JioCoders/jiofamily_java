@@ -80,7 +80,7 @@ public class AdminController implements AdminInfo {
      */
     @Override
     @PostMapping(ApiConstant.USER_LIST)
-    public ResponseEntity<ResponseUserList> getUserList(@RequestHeader(AUTHORIZATION) String token) {
+    public ResponseEntity<ResponseUserList> getUserList(@RequestHeader(value = "Authorization", required = false) String token) {
         return adminService.getUserList(token);
     }
 

@@ -1,0 +1,182 @@
+Jiocoders Inc. Privacy Statement
+Last updated: November 3rd, 2025
+
+Jiocoders has improved our Privacy Policy to make it easier for you to understand what data we collect, what it's used for, and what happens to this data after account deactivation.
+
+What's changing?
+
+Nothing is changing about the type of data Jiocoders collects or how we use it. Jiocoders doesn't share your data for marketing purposes, and we don’t share your information with other parties without your consent, except for the specific reasons listed in our Privacy Policy.
+We've re-written our Privacy Policy for improved clarity. We've added more information about what happens to your data after you deactivate your account, or request to fully delete your data.
+
+Scope
+Welcome to Jiocoders’s Privacy Statement. Your right to privacy and online security is important. This Privacy Statement describes Jiocoders’s collection, protection, disclosure, and use of the personal information provided to or collected through our service. This Privacy Statement applies to all of Jiocoders’s websites, mobile applications, and online services that link to or reference this Privacy Statement.
+
+If you do not agree with any of the practices described in this Privacy Statement, please do not use our services.
+Here's a quick overview:
+
+Jiocoders is a shared ledger for friends. You choose who you share your expenses with and what kind of expenses you want to share. When you share an expense, the details of those transactions are visible to those you share them with, whether an individual friend or a group. Anyone shared on an expense or seeing the expense in the group has the ability to edit, delete, and undelete the expenses that have been shared with them. Expenses you add in Jiocoders are not made public.
+
+In order to use Jiocoders, you will need to create an account, which requires providing some registration information such as name, email address and phone number. We use this information to manage your account including contacting you when necessary. The information can also be used so that your friends can find you and so you can access your account from anywhere.
+
+In addition to sharing your personal information to set up your account, we collect some other information about you, such as the type of device you use and your IP address. We use this information to help secure our service. We may also collect information about the type of expenses you add or the groups you create. We use this information to help improve and secure our service and to market our services to you.
+
+We don’t share your personal information with third parties for marketing purposes. We will never share your information with other parties for use other than as described in this statement without your consent. You can view your Privacy and Notification Settings from your Account Settings page. If you have any trouble accessing that information, please contact us at support@Jiocoders.com.
+
+Jiocoders and its service providers and partners maintain operations in the United States and other countries and may process your personal information outside the country where you are located. Some of those jurisdictions may not provide the same level of data protection as your home jurisdiction. By choosing our service and providing information to us, you agree and consent to the transfer, storage and processing of your personal information in countries other than your home country. Regardless of location, we apply technical, organizational, and contractual safeguards designed to protect your personal data and ensure it is processed in line with this Privacy Statement.
+
+Jiocoders is not intended for use by children under 13 years of age or minors. We do not knowingly collect personally identifiable information from children under 13. If you are a parent or guardian and you become aware that your child has provided us with personal information without your consent, please contact us at support@Jiocoders.com and we will promptly delete that information.
+DATA WE COLLECT AND HOW WE USE IT
+When you use Jiocoders, we may collect the following information about you:
+
+Information you provide to us:
+Registration information: When you sign up for an account with Jiocoders, you will be asked for your name, email address, phone number, and a password. We require you to provide an email address so that we can contact you about your account and so that you can access your data from any device. Friends will be able to add you as a contact in the application using your email address or phone number. Providing a phone number also adds an extra layer of security to your account. You can make changes to this information at any time from your Account Settings page or by emailing us at support@Jiocoders.com.
+User-generated content: When using the service, you may provide us with information concerning shared expenses and payments which have occurred outside the application, including group names, expense descriptions and amounts, payments and their confirmation numbers, comments and reminders, payment requests, receipt images, notes and memos. This information will be shared with contacts you specify in the course of using the service. For example, if you add an expense with a group of roommates, those roommates will be able to see the expense, the amount, the description, the currency code, the category, the date, comments and edits, any attached receipts and the split information. You are solely responsible for which contacts you share this information with.
+The way you use our service: We collect information about how you use and interact with Jiocoders. That information includes the types of expenses you add, the features you use, the actions you take, and the time, frequency and duration of your activities. For example, we log when and how often you add images to an expense. We use that information to improve our service, including the creation of new features.
+Information shared by others: Other Jiocoders users may share information with you using your contact information (such as email or phone number), and that information will be stored in the service. For instance, if a contact of yours shares an expense with you or adds you to a group using your email address, Jiocoders may notify you and store that information under your account according to your preferences.
+Device and location information: When you download or use Jiocoders, we will receive information about your device and approximate location, your browser, your operating system and app version. We use that information to provide the service, to improve our service and for account security and regulatory compliance.
+Billing information: Jiocoders offers paid premium services (“Jiocoders Pro”) in some markets. If you choose to subscribe to this service, we will ask for additional information including payment account information, such as your credit or debit card number, account and authentication information, as well as billing and contact details. For certain services, you may be required to provide your checking account number and routing number. For security purposes, you may also be asked to provide identification information to confirm your identity, including your first and last name, address, and phone number. We will use the information you provide to deliver Jiocoders Pro and for regulatory compliance purposes.
+Information related to third-party integrations: If you choose to use some of the optional integrations for the third-party services that we offer, we may collect information about you from those services. For example, if you choose to send payments to your friends using one of our payment services partners, we may collect information from that payment service (i.e. your username for that service, the status of that payment). We will use the information we collect to enable your use of the third-party integration. For example, we may use information from that service to display the status of that payment to you. We may also use information about payments sent via third party services to address fraud, security, or support issues.
+Google accounts: As part of using Jiocoders, you may be presented with the option to link one or more parts of your Google account to your Jiocoders account. If you authorize Jiocoders to use your Google account to login to Jiocoders, your name, contact information (usually an email address) and other basic account details (profile picture, age, gender, birthday) may be shared with Jiocoders at your discretion. If you give Jiocoders access to your Google Contacts as part of using our service, the contact data may be used to send Jiocoders invitations on your behalf to friends (to individuals specifically authorized by you), to locate your friends who already use Jiocoders, to recommend friends to invite to Jiocoders. We may also use the information to improve our services (for example, to identify common email spelling errors in user support).
+Jiocoders Pay: In the United States, Jiocoders offers a wallet and debit card service called Jiocoders Pay in partnership with an issuing bank partner. If you choose to use Jiocoders Pay, you will need to accept the Jiocoders Pay Terms of Service which provide all of the terms and conditions of the provision of that service, along with details concerning the use of your data in connection with that service. When you enroll in the Jiocoders Pay service, Jiocoders will collect and verify personal data in addition to the standard Jiocoders account, including your legal name, date of birth, Social Security number, home address, and phone number. That information is used to for identity verification, anti-fraud and regulatory (e.g. KYC/AML) requirements. In addition, Jiocoders will use this information to facilitate transfers, reconcile payments, detect unauthorized activity and to comply with applicable obligations under financial services law. Jiocoders will retain this personal data only for as long as necessary to support the operation of the wallet, resolve disputes, meet audit or legal retention requirements or comply with applicable legal obligations. After that period, Jiocoders will de-identify or securely delete your personal data unless Jiocoders is otherwise required to retain it by law.  A Jiocoders Pay account is not required to use the other features of the Jiocoders service.
+Information from other sources: We may use publicly available information about your name, email address, phone number, or other demographic data to help you during support or to address fraud or security concerns. For instance, if you provide us with your phone number, we may use a vendor to determine your phone carrier to identify an outage or to detect fraud.
+Other information: We may request other information from you such as feedback, questions, comments or suggestions. We will use that information to improve the service or as otherwise specifically described at the time of collection.
+MORE INFORMATION ABOUT HOW WE USE DATA
+As described above, Jiocoders is designed to help people share expenses and informal IOUs with friends. We process your information to provide, support, and secure our service (both automatically and manually). For example, we may use your information in some of the following ways:
+To record informal records of expenses, IOUs, and payments.
+To fulfill your requests for certain products and services.
+To help your Jiocoders contacts manage their Jiocoders relationship with you. For example, we may display your Jiocoders email address to your Jiocoders friends and group members so they may identify that they are sharing bills with the correct person.
+Respond to your inquiries about our services. For example, if you or a Jiocoders friend of yours contacts us for support, or as part of a random account audit, we may go into your account in "administrator mode" to help provide support to you or a friend.
+To detect and protect against errors, fraud, or other criminal activity.
+We may use your information for internal security purposes. For example, if you have activated a feature that limits access to a service from a specific device, our systems will access the device ID from each device you attempt to access the Service with to determine if the device is the specific authorized device. Additionally, we may use identifying information to monitor suspicious activity. For example, if we detect that a single account on our website is being accessed from multiple devices, as determined by tracking the device IDs that access an account, we may contact the user to ensure that such access has been authorized by the user.
+To verify your identity in the event you contact us for assistance.
+To analyze service usage, perform market research, project planning, product development, troubleshooting problems, analysis of user behavior, internal marketing and promotions, or other efforts to improve our service quality.
+To pre-fill form fields or store preferences for your convenience, such as making a payment on a third party service.
+To alert you to software compatibility issues and to improve our web design and functionality.
+To communicate with you. For example, we will email you when we release new features, have important news, and when you have a notification generated by activity (including a monthly summary). All of these emails are optional and can be set by going into your Account Settings. Some emails, such as, updates to our Privacy Statement, information about your account, password resets, or other security issues are not optional.
+To enforce our Terms of Service
+MORE INFORMATION ABOUT THIRD PARTY SERVICES
+Information from linked bank accounts: In connection with the Jiocoders Pay service or to use certain features of the Jiocoders Pro product, Jiocoders uses Plaid Technologies, Inc. (“Plaid”) to gather your data from your financial institutions. If you use that feature, you acknowledge and agree that Plaid has the right, power, and authority to act on your behalf to access and transmit your personal and financial account information from the relevant financial institution. You agree to your personal and financial information being transferred, stored, and processed by Plaid in accordance with the Plaid Privacy Policy (https://plaid.com/legal). We will request your permission before granting such access.
+
+Account Information Services (AIS) and Payment Services in Europe
+For customers in the European Economic Area (EEA), Jiocoders may provide certain services regulated under the EU Payment Services Directive (PSD2), including Account Information Services.
+AIS: With your explicit consent, we may access some process information from your payment accounts, including transaction, history and account number in order to provide those account information services. We do not collect or store your account login credentials.
+Payment Connectivity Services: when you request a payment initiation, we transmit your payment instructions through a licensed third-party provider directly between the relevant bank accounts. We will prefill the amount and recipient details to make the process easier. So if a user adds their bank account information to their Jiocoders profile to receive payments, that information will be visible to others attempting to pay them. We do not request or store your online banking credentials at any time.
+All AIS and payment services activities are carried out in accordance with applicable laws and regulations, and only with your authorization. Data process for these services will be solely to deliver the requested service and for compliance with legal and regulatory obligations.
+
+Third-Party API Usage
+Jiocoders provides a third-party API which allows other applications to have access to the user's Jiocoders account data upon request of the user. Jiocoders will share your data with those applications only if you specifically authorize your account with that application by using the Jiocoders username and password prompt provided. We do not control these third parties and do not warrant any aspect of the third party's service. You agree that Jiocoders is not responsible, liable for anything which occurs on these services.
+MORE INFORMATION ABOUT HOW WE SHARE YOUR INFORMATION
+Vendors
+
+We may use third-party service providers to help provide, support and improve our services. For example, our vendors provide maintenance services, database management, cloud hosting, web and mobile analytics, receipt scanning services and OCR. Our vendors are contractually obligated to protect your information in keeping with the terms of this Privacy Statement and as you may otherwise agree (e.g. as you may agree with Plaid or other secure banking connectivity platforms we integrate with).
+
+Where permitted by law, third parties may use data provided to them to improve their own services; for instance, a third party receipt-scanning service may improve the OCR quality of their OCR service by training an algorithm on receipts you provide to Jiocoders.
+
+As noted above, we don’t share your personal information with third parties for marketing purposes. Specifically, at the request of our cloud communications vendor, we want to affirm that no SMS mobile information will be shared with third parties for marketing purposes and this includes your text messaging originator opt-in data and consent.
+
+For legal matters
+
+We will disclose personal information when required by applicable law and will do our best to ensure that such disclosures are limited and proportionate. For example, we may disclosure information:
+to respond to subpoenas, court orders, or bona-fide legal processes;
+in order to investigate, prevent, defend against, or take other action regarding violations of our Terms of Service, illegal activities, suspected fraud, or situations involving potential threats to the legal rights or physical safety of any person or the security of our network, sites or service;
+to respond to claims that any posting or other content violates the rights of third parties;
+in an emergency, to protect the health and safety of our users; or
+as otherwise required by any applicable law.
+Business Transfer
+
+If our company or our assets are acquired by another company, the transfer may include our customer information. In that case, the acquiring party will assume the rights and obligations regarding such information as described in this Privacy Statement.
+
+Non-identifiable information
+
+We may disclose non-personal information to third parties as we deem appropriate (e.g. for their research or product development) and to help us determine how we can improve our service. We may also disclose non-personal information to our service providers and other third parties about how our users collectively use the service.
+SECURITY
+How we protect the information we collect
+
+We take the security of your information seriously. We use technical and administrative security measures such as encryption techniques and authentication procedures to maintain the security of your online session. Please understand, however, that while we try our best to safeguard your personal information once we receive it, no transmission of data over the Internet or any other public network can be guaranteed to be 100% secure.
+
+You can help protect the privacy of your own information by using encryption and other techniques to prevent unauthorized interception of your personal information. You are responsible for the security of your information when using unencrypted, public or otherwise unsecured networks.
+
+We will contact you as required by applicable law in the event of a breach of the security, confidentiality, or integrity of our systems.
+COOKIES
+How we use cookies and similar technologies:
+
+Like many websites, the Jiocoders website uses tracking technologies such as cookies, web beacons and similar technologies to store your session information and to track the use of Jiocoders. We may also use these technologies to monitor traffic, improve Jiocoders, and make it easier to use and more relevant.
+
+Your browser or device may include “Do Not Track” functionality. Jiocoders’s information collection and disclosure practices, and the choices that we provide to customers, will continue to operate as described in this Privacy Statement, whether or not a Do Not Track signal is received. To learn more about how Do Not Track works, please visit http://allaboutdnt.com/.
+
+You also have choices to limit some tracking mechanisms that collect information when you use our services. Many web browsers automatically accept cookies, but you can usually modify your browser’s setting to decline cookies if you prefer. If you choose to decline cookies, certain features of our service may not function properly or remain accessible to you.
+CHOICE AND ACCESS; CLOSING YOUR ACCOUNT; DATA RETENTION
+Choice and Access to your personal information
+
+You may access, review, and update the personal information you have submitted to us at any time. You can make changes to your personal information from your Account Settings page. If you need help updating or correcting your information, please contact us at support@Jiocoders.com.
+
+Users can export data from their groups and friendships by following the instructions found here. We’re happy to help provide exports from your account. You can request exports by contacting us at support@Jiocoders.com.
+
+Your choices regarding the data we collect and process
+
+In many instances, you have choices about the information you provide and limiting how we use your information. These choices, and any related consequences, are described below:
+Personal information: You may choose not to provide your personal information, such as your name, address, phone number or payment information, but then you might not be able to take advantage of many of our service features.
+Emails, newsletters, and other communications: We may send periodic service related information via email or push notifications. You may choose whether or not you want to receive those optional communications by indicating your preference in your account profile. You may also follow the unsubscribe instructions in the email you receive. Please note that certain services-related messages (such as password resets) that we send are necessary for the proper functioning and use of the services and you may not have the ability to opt-out of those messages.
+Location tracking: Most mobile devices allow you to control or disable the use of location services by any application on your mobile device through the device’s settings menu.
+Allow friends to find you: You can choose whether or not you want friends to know if your email address of phone number is already associated with a Jiocoders account from your Account Settings page. Friends with your contact information will still be able to send you invitations and share expenses with you.
+Third parties: You have the ability to choose whether or not you’d like to use many of the third-party integrations we offer. If you authorize an account connection from a third-party account or platform, such as a Google or Facebook account, you can manage your connection preferences from the third-party account or platform. Please refer to the privacy notice that governs the third-party platform for more information on the choices you may have.
+Choices when closing your account - Deactivation and Deletion
+
+You may close your Jiocoders account at any time in the account settings area of the application or the website. When you close your account, you may choose to "deactivate" your account or to permanently delete the account.
+
+If you choose to deactivate your account, we will retain your information for a reasonable period of time, allowing you to reactivate and retain information that you previously provided. When you deactivate your account, you may reactivate it by writing to us at support@Jiocoders.com.
+
+Alternatively, you may choose to delete your account. Deleting your account results in the permanent removal of all of the personal data in your account.  When we receive a request to delete an account (or a request to delete all personal data we hold for a particular person), we will use your email address or phone number to confirm that request came from you. Once data is deleted, it will not be retrievable.
+
+Please be aware that, even if you choose to delete your account, all non-personal information concerning shared expenses will still appear in each applicable member's account that remains after your account is deleted. In that case, your personal information (name and contact information) will not appear.
+
+Data Retention
+
+We will retain your information as long as necessary to serve you and as otherwise required to operate our business, all in accordance with applicable laws and regulations. We may also retain personal information to comply with specific laws pertaining to the financial industry and to prevent fraud, resolve disputes and enforce our Terms of Service.
+
+As noted above, when you delete personal information, expenses, payments and related information involving you (either that you have shared or that have been shared with you) may remain visible to people with whom they have been shared as part of their records (just as deleting an email account does not delete the email from the recipient's account).
+Other legal information
+
+We process personal data only when we have a valid legal basis under applicable data protection laws. For users in the European Economic Area, this means we rely on the legal bases set out in the GDPR. Comparable protections also apply in other jurisdictions. In all cases, we process personal data only when a lawful basis applies, which may include:
+Consent: for example, when you authorize us to access account information or to initiate a payment. You may withdraw your consent at any time.
+Contractual necessity: when processing is required to provide the services you request, such as creating your account, recording shared expenses and enabling payment functionality.
+Legal obligations: when process processing is necessary to comply with legal or regulatory requirements, including fraud prevention, anti-money laundering and financial reporting.
+Legitimate interests: when processing is needed to maintain the security and integrity of our services, to prevent abuse, or to improve our offerings, provided those interests are not overridden by your rights and interests.
+No matter where you're located, we apply appropriate safeguards and honor the rights available to you under the data protection laws that apply in your jurisdiction.
+CHANGES
+Changes to this Privacy Statement
+
+We may update this Privacy Statement periodically. If we make material changes, we will notify you. Changes are effective immediately upon posting. The date last revised appears at the top of this Privacy Statement.
+CONTACT US
+Got Questions?
+
+If you have questions or concerns regarding this Privacy Statement, please contact Jiocoders in writing:
+Email: support@Jiocoders.com
+Mailing address: Jiocoders Inc., 150 Union St #606, Providence, RI, 02903, USA
+Email for Jiocoders's EU and UK Representative: rep_Jiocoders@prighter.com
+Jiocoders
+
+About
+Press
+Blog
+Jobs
+Calculators
+API
+Account
+
+Log in
+Sign up
+Reset password
+Settings
+Jiocoders Pro
+Jiocoders Pay
+Jiocoders Card
+More
+
+Contact us
+FAQ
+Site status
+Terms of Service
+Privacy Policy
+  
+Made with :) in Providence, RI, USA
