@@ -1,18 +1,19 @@
 package com.jiocoders.java.jiofamily.networkmodel.response.data;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Setter
-@Getter
 @Data
 public class UserData {
     int userId;
+
+    List<Integer> interestIds;
+
     String firstName;
 
     String lastName;

@@ -24,6 +24,7 @@ spring:
   # DB Configuration
   # ===========================
   datasource:
+    driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/jiofamily #${SPRING_DATASOURCE_URL}
     username: postgres #${SPRING_DATASOURCE_USERNAME}
     password: Postgress #${SPRING_DATASOURCE_PASSWORD}

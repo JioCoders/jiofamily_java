@@ -1,39 +1,41 @@
 package com.jiocoders.java.jiofamily.security;
 
-import java.util.Base64;
-import java.util.Date;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import javax.crypto.SecretKey;
-import io.jsonwebtoken.security.Keys;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
-
-import com.jiocoders.java.jiofamily.controller.AdminController;
-
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import jakarta.annotation.PostConstruct;
+import io.jsonwebtoken.security.Keys;
 import jakarta.servlet.http.HttpServletRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+import javax.crypto.SecretKey;
+import java.nio.charset.StandardCharsets;
+import java.util.Date;
 
 @Component
 public class JwtTokenProvider {
-    private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
+    private static final Logger logger = LoggerFactory.getLogger(JwtTokenProvider.class);
 
-    private String secretKey = "JWT_SECRET";
+    @Value("${app.jwt.secret}")
+    private String secretKey;
 
     @Value("${security.jwt.token.expire-length:604800000}")
-    private long validityInMilliseconds = 604800000; // 30 days
+    private final long validityInMilliseconds = 604800000; // 30 days
 
     private static final String KEY_SCOPE = "scope";
+    // private SecretKey SIGNING_KEY;
 
-    @PostConstruct
-    protected void init() {
-        secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
-    }
+    // JwtTokenProvider() {
+    // // String secretString = System.getenv(secretKey);
+    // SIGNING_KEY = Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8));
+    // logger.info("Secret Key: " + secretKey);
+    // }
+    // @PostConstruct
+    // protected void init() {
+    // secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
+    // }
 
     public String createToken(String username, AuthScope scope) {
 
@@ -42,22 +44,32 @@ public class JwtTokenProvider {
 
         Date now = new Date();
         Date validity = new Date(now.getTime() + validityInMilliseconds);
-
-        String secret = System.getenv(secretKey);
-        SecretKey key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
-        logger.info("Secret Key: " + secret);
+        SecretKey SIGNING_KEY = Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8));
 
         return Jwts.builder()
                 .setClaims(claims)
                 .setIssuedAt(now)
                 .setExpiration(validity)
-                .setSubject(secret)
-                .signWith(key)
+                .setSubject(username)
+                .signWith(SIGNING_KEY)
                 .compact();
     }
 
     public String getUsername(String token) {
-        return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
+        SecretKey SIGNING_KEY = Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8));
+
+        try {
+            // Use the consistent static key for parsing
+            return Jwts.parserBuilder()
+                    .setSigningKey(SIGNING_KEY)
+                    .build()
+                    .parseClaimsJws(token)
+                    .getBody()
+                    .getSubject();
+        } catch (JwtException | IllegalArgumentException e) {
+            // Log the error e.g., logger.error("Invalid JWT token: {}", e.getMessage());
+            return null; // or throw a specific exception for the calling service to handle
+        }
     }
 
     public String resolveToken(HttpServletRequest req) {
@@ -86,15 +98,23 @@ public class JwtTokenProvider {
     }
 
     public boolean validateToken(String token, AuthScope scopeToVeify) {
-        try {
-            Claims claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
-            String claimScope = claims.get(KEY_SCOPE).toString();
+        SecretKey SIGNING_KEY = Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8));
 
-            if (scopeToVeify.value.equals(claimScope)) {
-                return true;
-            }
-            return false;
+        try {
+            // Use the consistent static key for parsing
+            Claims claims = Jwts.parserBuilder()
+                    .setSigningKey(SIGNING_KEY)
+                    .build()
+                    .parseClaimsJws(token)
+                    .getBody();
+
+            // Note: Use the same string literal "scope" used in createToken
+            String claimScope = claims.get("scope", String.class);
+
+            return scopeToVeify.value.equals(claimScope);
+
         } catch (JwtException | IllegalArgumentException e) {
+            // Log the error
             return false;
         }
     }

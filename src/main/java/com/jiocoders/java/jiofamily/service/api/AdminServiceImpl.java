@@ -1,12 +1,17 @@
 package com.jiocoders.java.jiofamily.service.api;
 
 import com.jiocoders.java.jiofamily.base.ResponseBase;
-import com.jiocoders.java.jiofamily.controller.AdminController;
-import com.jiocoders.java.jiofamily.entity.*;
+import com.jiocoders.java.jiofamily.entity.Department;
+import com.jiocoders.java.jiofamily.entity.Location;
+import com.jiocoders.java.jiofamily.entity.User;
 import com.jiocoders.java.jiofamily.networkmodel.request.*;
-import com.jiocoders.java.jiofamily.networkmodel.response.*;
-import com.jiocoders.java.jiofamily.networkmodel.response.data.*;
-import com.jiocoders.java.jiofamily.repository.*;
+import com.jiocoders.java.jiofamily.networkmodel.response.ResponseUserDetail;
+import com.jiocoders.java.jiofamily.networkmodel.response.ResponseUserList;
+import com.jiocoders.java.jiofamily.networkmodel.response.data.CommonData;
+import com.jiocoders.java.jiofamily.networkmodel.response.data.UserData;
+import com.jiocoders.java.jiofamily.repository.AdminRepository;
+import com.jiocoders.java.jiofamily.repository.DepartmentRepository;
+import com.jiocoders.java.jiofamily.repository.LocationRepository;
 import com.jiocoders.java.jiofamily.security.AuthScope;
 import com.jiocoders.java.jiofamily.security.JwtTokenProvider;
 import com.jiocoders.java.jiofamily.utils.ApiConstant;
@@ -15,15 +20,13 @@ import com.jiocoders.java.jiofamily.utils.StrConstant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.Cache;
-import org.springframework.cache.CacheManager;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -35,7 +38,7 @@ import static com.jiocoders.java.jiofamily.utils.StrConstant.UN_AUTHORISE_ACCESS
 
 @Service(ADMIN_SERVICE)
 public class AdminServiceImpl implements AdminService {
-    private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
+    private static final Logger logger = LoggerFactory.getLogger(AdminServiceImpl.class);
 
     @Autowired
     JwtTokenProvider jwtTokenProvider;
@@ -53,10 +56,11 @@ public class AdminServiceImpl implements AdminService {
     // Method responsible for refreshing the cache
     // @Override
     // public void refreshCache(String cacheName) {
-    //     Cache cache = cacheManager.getCache(cacheName);
-    //     if (cache != null) {
-    //         cache.clear(); // Clears all entries from the cache, effectively refreshing it
-    //     }
+    // Cache cache = cacheManager.getCache(cacheName);
+    // if (cache != null) {
+    // cache.clear(); // Clears all entries from the cache, effectively refreshing
+    // it
+    // }
     // }
 
     @Override
@@ -79,12 +83,13 @@ public class AdminServiceImpl implements AdminService {
 
         // CHECK VALIDATION
         int loginUserId = Integer.parseInt(jwtTokenProvider.getUsername(bearer));
-        User loginUser = adminRepository.findById(loginUserId).get();
-        if (loginUser.getCompanyId() == 0) {
+        Optional<User> repoUser = adminRepository.findById(loginUserId);
+        if (repoUser.isPresent() && repoUser.get().getCompanyId() == 0) {
             responseBase.setMessage(UN_AUTHORISE_ACCESS);
             responseBase.setStatus(INVALID_REQUEST_CODE);
             return new ResponseEntity<>(responseBase, HttpStatus.OK);
         }
+        User loginUser = repoUser.get();
         String errorString = null;
         if (!checkNotNull(request.getFirstName())) {
             errorString = "First Name";
@@ -96,7 +101,7 @@ public class AdminServiceImpl implements AdminService {
                 errorString = errorString + ",Password";
             }
         }
-        if (!checkNotNull(request.getEmail())) {
+        if (!checkNotNull(request.getEmailId())) {
             if (errorString == null) {
                 errorString = "Email";
             } else {
@@ -105,7 +110,7 @@ public class AdminServiceImpl implements AdminService {
         }
 
         Pattern pattern = Pattern.compile(regexEmail);
-        Matcher matcher = pattern.matcher(request.getEmail());
+        Matcher matcher = pattern.matcher(request.getEmailId());
         if (!matcher.matches()) {
             if (errorString == null) {
                 errorString = "Email";
@@ -147,13 +152,13 @@ public class AdminServiceImpl implements AdminService {
             return new ResponseEntity<>(responseBase, HttpStatus.OK);
         }
 
-        User user = adminRepository.findByEmailId(request.getEmail());
+        User user = adminRepository.findByEmailId(request.getEmailId());
         if (user == null) {
             user = new User();
             user.setFirstName(request.getFirstName());
             user.setLastName(request.getLastName());
             user.setMobileNo(request.getMobile());
-            user.setEmailId(request.getEmail());
+            user.setEmailId(request.getEmailId());
             user.setPassword(request.getPassword());
             user.setBio("");
             user.setDob(request.getDob());
@@ -199,14 +204,14 @@ public class AdminServiceImpl implements AdminService {
         }
 
         int loginUserId = Integer.parseInt(jwtTokenProvider.getUsername(bearer));
-        logger.info("loginUserId=>" + loginUserId);
-        User user = adminRepository.findById(request.getUserId()).get();
-        if (user == null || request == null) {
+        logger.info("loginUserId=>{}", loginUserId);
+        Optional<User> user = adminRepository.findById(request.getUserId());
+        if (user.isEmpty()) {
             responseBase.setMessage("User not found!");
             responseBase.setStatus(ApiConstant.INVALID_REQUEST_CODE);
             return new ResponseEntity<>(responseBase, HttpStatus.OK);
         }
-        if (!user.isActive()) {
+        if (!user.get().isActive()) {
             responseBase.setMessage("User is not active to update!");
             responseBase.setStatus(ApiConstant.INVALID_REQUEST_CODE);
             return new ResponseEntity<>(responseBase, HttpStatus.OK);
@@ -229,7 +234,7 @@ public class AdminServiceImpl implements AdminService {
 
         String validationResult = checkEmpUpdateValidation(request);
         if (validationResult != null) {
-            responseBase.setMessage("User is not active to update!");
+            responseBase.setMessage(validationResult);
             responseBase.setStatus(ApiConstant.INVALID_REQUEST_CODE);
             return new ResponseEntity<>(responseBase, HttpStatus.OK);
         }
@@ -259,14 +264,14 @@ public class AdminServiceImpl implements AdminService {
         }
         // CHECK VALID USER ID
         int userId = Integer.parseInt(jwtTokenProvider.getUsername(bearer));
-        logger.info("UserId=>" + userId);
-        User user = adminRepository.findById(userId).get();
-        if (user == null) {
+        logger.info("UserId: {}", userId);
+        Optional<User> user = adminRepository.findById(userId);
+        if (user.isEmpty()) {
             response.setMessage("User not found!");
             response.setStatus(ApiConstant.INVALID_REQUEST_CODE);
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
-        if (!user.isActive()) {
+        if (!user.get().isActive()) {
             response.setMessage("User is not active to see the user list record!");
             response.setStatus(ApiConstant.INVALID_REQUEST_CODE);
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -333,14 +338,14 @@ public class AdminServiceImpl implements AdminService {
         }
         // CHECK VALID USER ID
         int userId = Integer.parseInt(jwtTokenProvider.getUsername(bearer));
-        logger.info("UserId=>" + userId);
-        User user = adminRepository.findById(userId).get();
-        if (user == null) {
+        logger.info("UserId: {}", userId);
+        Optional<User> user = adminRepository.findById(userId);
+        if (user.isEmpty()) {
             response.setMessage("User not found!");
             response.setStatus(ApiConstant.INVALID_REQUEST_CODE);
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
-        if (!user.isActive()) {
+        if (!user.get().isActive()) {
             response.setMessage("User is not active to update!");
             response.setStatus(ApiConstant.INVALID_REQUEST_CODE);
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -351,12 +356,13 @@ public class AdminServiceImpl implements AdminService {
             response.setStatus(ApiConstant.INVALID_REQUEST_CODE);
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
-        User emp = adminRepository.findById(request.getUserId()).get();
-        if (emp == null) {
+        Optional<User> empRepo = adminRepository.findById(request.getUserId());
+        if (empRepo.isEmpty()) {
             response.setMessage("Employee not found");
             response.setStatus(ApiConstant.INVALID_REQUEST_CODE);
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
+        User emp = empRepo.get();
         emp.setPassword(request.getPassword());
         adminRepository.saveAndFlush(emp);
         response.setMessage("Password changed successfully!");
@@ -384,14 +390,14 @@ public class AdminServiceImpl implements AdminService {
         }
         // CHECK VALID USER ID
         int userId = Integer.parseInt(jwtTokenProvider.getUsername(bearer));
-        logger.info("UserId=>" + userId);
-        User user = adminRepository.findById(userId).get();
-        if (user == null) {
+        logger.info("UserId: {}", userId);
+        Optional<User> user = adminRepository.findById(userId);
+        if (user.isEmpty()) {
             response.setMessage("User not found!");
             response.setStatus(ApiConstant.INVALID_REQUEST_CODE);
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
-        if (!user.isActive()) {
+        if (!user.get().isActive()) {
             response.setMessage("User is not active to update!");
             response.setStatus(ApiConstant.INVALID_REQUEST_CODE);
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -402,12 +408,13 @@ public class AdminServiceImpl implements AdminService {
             response.setStatus(ApiConstant.INVALID_REQUEST_CODE);
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
-        User emp = adminRepository.findById(request.getUserId()).get();
-        if (emp == null) {
+        Optional<User> empRepo = adminRepository.findById(request.getUserId());
+        if (empRepo.isEmpty()) {
             response.setMessage("Employee not found");
             response.setStatus(ApiConstant.INVALID_REQUEST_CODE);
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
+        User emp = empRepo.get();
         if (emp.getOtp().equals(request.getOtp())) {
             emp.setActive(true);
             adminRepository.saveAndFlush(emp);
@@ -440,13 +447,14 @@ public class AdminServiceImpl implements AdminService {
         }
         // CHECK VALID USER ID
         int userId = Integer.parseInt(jwtTokenProvider.getUsername(bearer));
-        logger.info("UserId=>" + userId);
-        User user = adminRepository.findById(userId).get();
-        if (user == null) {
+        logger.info("UserId: {}", userId);
+        Optional<User> userRepo = adminRepository.findById(userId);
+        if (userRepo.isEmpty()) {
             response.setMessage("User not found!");
             response.setStatus(ApiConstant.INVALID_REQUEST_CODE);
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
+        User user = userRepo.get();
         if (!user.isActive()) {
             response.setMessage("User is not active to update!");
             response.setStatus(ApiConstant.INVALID_REQUEST_CODE);
@@ -458,14 +466,14 @@ public class AdminServiceImpl implements AdminService {
             response.setStatus(ApiConstant.INVALID_REQUEST_CODE);
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
-        User emp = adminRepository.findById(request.getUserId()).get();
-        if (emp == null) {
+        Optional<User> emp = adminRepository.findById(request.getUserId());
+        if (emp.isEmpty()) {
             response.setMessage("Employee not found");
             response.setStatus(ApiConstant.INVALID_REQUEST_CODE);
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
-        emp.setActive(request.isActive());
-        adminRepository.saveAndFlush(emp);
+        emp.get().setActive(request.isActive());
+        adminRepository.saveAndFlush(emp.get());
         response.setMessage("User removed successfully!");
         response.setStatus(ApiConstant.SUCCESS_CODE);
 
@@ -491,18 +499,24 @@ public class AdminServiceImpl implements AdminService {
         // CHECK VALID USER ID
         int loginUserId = Integer.parseInt(jwtTokenProvider.getUsername(bearer));
         logger.info("UserId={}", loginUserId);
-        User loginUser = adminRepository.findById(loginUserId).get();
-        if (loginUser == null) {
+        Optional<User> loginUser = adminRepository.findById(loginUserId);
+        if (loginUser.isEmpty()) {
             response.setMessage("User Detail not found!");
             response.setStatus(ApiConstant.INVALID_REQUEST_CODE);
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
-        if (!loginUser.isActive()) {
+        if (!loginUser.get().isActive()) {
             response.setMessage("User Detail is not active to update!");
             response.setStatus(ApiConstant.INVALID_REQUEST_CODE);
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
-        User u = adminRepository.findById(id).get();
+        Optional<User> userRepo = adminRepository.findById(id);
+        if (userRepo.isEmpty()) {
+            response.setMessage("User Detail not found!");
+            response.setStatus(ApiConstant.INVALID_REQUEST_CODE);
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        User u = userRepo.get();
         UserData data = new UserData();
         data.setUserId(u.getId());
         data.setFirstName(u.getFirstName());
@@ -538,7 +552,7 @@ public class AdminServiceImpl implements AdminService {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    boolean setEmployeeUpdate(User user, RequestUpdateUser request) {
+    void setEmployeeUpdate(User user, RequestUpdateUser request) {
         user.setFirstName(request.getFirstName());
         user.setLastName(request.getLastName());
         user.setMobileNo(request.getMobileNo());
@@ -547,7 +561,7 @@ public class AdminServiceImpl implements AdminService {
         user.setEmployeeId(request.getEmployeeId());
         user.setUserLocation(request.getUserLocationId());
         user.setDepartmentId(request.getDepartmentId());
-        return true;
+        user.setInterestIdList(request.getInterestIds());
     }
 
     String checkEmpUpdateValidation(RequestUpdateUser request) {

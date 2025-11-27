@@ -1,32 +1,30 @@
 package com.jiocoders.java.jiofamily.entity;
 
+import jakarta.persistence.*;
+import lombok.Data;
+
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.jiocoders.java.jiofamily.utils.DbConstant.TABLE_USER;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 // @TypeDefs({
 // @TypeDef(name = "integer-array", typeClass = IntArrayType.class) })
 
 @Data
-@Setter
-@Getter
 @Entity
 @Table(name = TABLE_USER)
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Integer id;
+
+    // Stored as "1,2,3"
+    @Column(name = "interest_ids", length = 200)
+    private String interestIds;
 
     @Column(name = "first_name", nullable = false)
     private String firstName;
@@ -78,5 +76,22 @@ public class User implements Serializable {
 
     @Column(name = "created_at")
     private long createdAt;
+
+    // Convert DB -> List<Integer>
+    public List<Integer> getInterestIdList() {
+        if (interestIds == null || interestIds.isEmpty())
+            return List.of();
+        return Arrays.stream(interestIds.split(","))
+                .map(String::trim)
+                .map(Integer::parseInt)
+                .toList();
+    }
+
+    // Convert List<Integer> -> DB value
+    public void setInterestIdList(List<Integer> ids) {
+        this.interestIds = ids == null || ids.isEmpty()
+                ? null
+                : ids.stream().map(String::valueOf).collect(Collectors.joining(","));
+    }
 
 }

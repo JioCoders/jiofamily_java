@@ -12,6 +12,7 @@ import com.jiocoders.java.jiofamily.service.api.AdminService;
 import com.jiocoders.java.jiofamily.swagger.AdminInfo;
 import com.jiocoders.java.jiofamily.utils.ApiConstant;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -48,12 +49,12 @@ public class AdminController implements AdminInfo {
      * Register a new employee with its detail
      *
      * @param request [employee info]
-     * @param token
+     * @param token String
      * @return status code and a response message
      */
     @Override
     @PostMapping(ApiConstant.USER_ADD)
-    public ResponseEntity<ResponseBase> addUser(@RequestBody RequestAddUser request,
+    public ResponseEntity<ResponseBase> addUser(@Valid @RequestBody RequestAddUser request,
             @RequestHeader(AUTHORIZATION) String token) {
         return adminService.addUser(request, token);
     }
@@ -61,8 +62,8 @@ public class AdminController implements AdminInfo {
     /**
      * Update employee API
      *
-     * @param request
-     * @param token
+     * @param request RequestUpdateUser
+     * @param token String
      * @return response
      */
     @Override
@@ -75,20 +76,21 @@ public class AdminController implements AdminInfo {
     /**
      * Get list of all active employees(users)
      *
-     * @param token
+     * @param token String
      * @return response
      */
     @Override
     @PostMapping(ApiConstant.USER_LIST)
-    public ResponseEntity<ResponseUserList> getUserList(@RequestHeader(value = "Authorization", required = false) String token) {
+    public ResponseEntity<ResponseUserList> getUserList(
+            @RequestHeader(value = "Authorization", required = false) String token) {
         return adminService.getUserList(token);
     }
 
     /**
      * Post request to get user details information in the system.
      *
-     * @param id
-     * @return
+     * @param id Integer
+     * @return ResponseEntity<ResponseUserDetail>
      */
     @Override
     @PostMapping(DETAILS)
@@ -101,8 +103,8 @@ public class AdminController implements AdminInfo {
      * Reset password by its employee id
      *
      * @param request (employeeId, password)
-     * @param token
-     * @return
+     * @param token String
+     * @return ResponseEntity<ResponseUserDetail>
      */
     @Override
     @PostMapping(ApiConstant.RESET_PASSWORD)
@@ -116,8 +118,8 @@ public class AdminController implements AdminInfo {
      * sms
      *
      * @param request (userId, otp)
-     * @param token
-     * @return
+     * @param token String
+     * @return ResponseEntity<ResponseUserDetail>
      */
     @PostMapping(ApiConstant.USER_VALIDATE)
     public ResponseEntity<ResponseBase> validateUser(@RequestHeader(AUTHORIZATION) String token,
