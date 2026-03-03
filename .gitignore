@@ -5,8 +5,8 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 *.gradle/
-*.env
-.env
+#*.env
+#.env
 gradle-app.settings
 local.properties
 .gradle/
